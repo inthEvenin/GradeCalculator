@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="seongchanlee.gradecalculator.ResultActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="So far, you are currently at:"
+        android:id="@+id/textExp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CurrentGrade"
+        android:id="@+id/textCurrent"
+        android:layout_below="@+id/textExp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="25dp"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:id="@+id/textPercentage1"
+        android:layout_alignTop="@+id/textCurrent"
+        android:layout_toRightOf="@+id/textCurrent"
+        android:layout_toEndOf="@+id/textCurrent"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To acquire desired grade:"
+        android:id="@+id/textExp2"
+        android:layout_below="@+id/textCurrent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:textSize="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to main"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickBack" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Obtain"
+        android:id="@+id/textExp3"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GoalGrade"
+        android:id="@+id/textGoal"
+        android:layout_below="@+id/textExp3"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:textColor="#008000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:id="@+id/textPercentage2"
+        android:layout_alignBottom="@+id/textGoal"
+        android:layout_toRightOf="@+id/textGoal"
+        android:layout_toEndOf="@+id/textGoal"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="on remaining"
+        android:id="@+id/textExp4"
+        android:layout_below="@+id/textGoal"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RemainingWeight"
+        android:id="@+id/textWeight"
+        android:layout_below="@+id/textExp4"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:textColor="#0000FF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:id="@+id/textPercentage3"
+        android:layout_alignBottom="@+id/textWeight"
+        android:layout_toRightOf="@+id/textWeight"
+        android:layout_toEndOf="@+id/textWeight"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="of the work in course."
+        android:id="@+id/textExp5"
+        android:layout_below="@+id/textWeight"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+</RelativeLayout>
