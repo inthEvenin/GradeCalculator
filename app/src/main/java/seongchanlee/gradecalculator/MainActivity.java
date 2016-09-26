@@ -7,7 +7,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
+    private static float emptyFieldFloat = 0.00f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,75 +34,19 @@ public class MainActivity extends AppCompatActivity {
 
         EditText text_desired = (EditText) findViewById(R.id.desiredGrade);
 
-        float valGrade1;
-        if (!TextUtils.isEmpty(text_grade1.getText())) {
-            valGrade1 = Float.parseFloat(text_grade1.getText().toString());
-        } else {
-            valGrade1 = 0.00f;
-        }
+        HashMap<String, Float> valueMap = new HashMap<>();
 
-        float valGrade2;
-        if (!TextUtils.isEmpty(text_grade2.getText())) {
-            valGrade2 = Float.parseFloat(text_grade2.getText().toString());
-        } else {
-            valGrade2 = 0.00f;
-        }
+        valueMap.put("Grade1", editTextToFloat(text_grade1));
+        valueMap.put("Grade2", editTextToFloat(text_grade2));
+        valueMap.put("Grade3", editTextToFloat(text_grade3));
+        valueMap.put("Grade4", editTextToFloat(text_grade4));
+        valueMap.put("Grade5", editTextToFloat(text_grade5));
 
-        float valGrade3;
-        if (!TextUtils.isEmpty(text_grade3.getText())) {
-            valGrade3 = Float.parseFloat(text_grade3.getText().toString());
-        } else {
-            valGrade3 = 0.00f;
-        }
-
-        float valGrade4;
-        if (!TextUtils.isEmpty(text_grade4.getText())) {
-            valGrade4 = Float.parseFloat(text_grade4.getText().toString());
-        } else {
-            valGrade4 = 0.00f;
-        }
-
-        float valGrade5;
-        if (!TextUtils.isEmpty(text_grade5.getText())) {
-            valGrade5 = Float.parseFloat(text_grade5.getText().toString());
-        } else {
-            valGrade5 = 0.00f;
-        }
-
-        float valWeight1;
-        if (!TextUtils.isEmpty(text_weight1.getText())) {
-            valWeight1 = Float.parseFloat(text_weight1.getText().toString());
-        } else {
-            valWeight1 = 0.00f;
-        }
-
-        float valWeight2;
-        if (!TextUtils.isEmpty(text_weight2.getText())) {
-            valWeight2 = Float.parseFloat(text_weight2.getText().toString());
-        } else {
-            valWeight2 = 0.00f;
-        }
-
-        float valWeight3;
-        if (!TextUtils.isEmpty(text_weight3.getText())) {
-            valWeight3 = Float.parseFloat(text_weight3.getText().toString());
-        } else {
-            valWeight3 = 0.00f;
-        }
-
-        float valWeight4;
-        if (!TextUtils.isEmpty(text_weight4.getText())) {
-            valWeight4 = Float.parseFloat(text_weight4.getText().toString());
-        } else {
-            valWeight4 = 0.00f;
-        }
-
-        float valWeight5;
-        if (!TextUtils.isEmpty(text_weight5.getText())) {
-            valWeight5 = Float.parseFloat(text_weight5.getText().toString());
-        } else {
-            valWeight5 = 0.00f;
-        }
+        valueMap.put("Weight1", editTextToFloat(text_weight1));
+        valueMap.put("Weight2", editTextToFloat(text_weight2));
+        valueMap.put("Weight3", editTextToFloat(text_weight3));
+        valueMap.put("Weight4", editTextToFloat(text_weight4));
+        valueMap.put("Weight5", editTextToFloat(text_weight5));
 
         float valDesired;
         if (!TextUtils.isEmpty(text_desired.getText())) {
@@ -111,20 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent_01 = new Intent(getApplicationContext(), ResultActivity.class);
 
-        intent_01.putExtra("Grade1", valGrade1);
-        intent_01.putExtra("Grade2", valGrade2);
-        intent_01.putExtra("Grade3", valGrade3);
-        intent_01.putExtra("Grade4", valGrade4);
-        intent_01.putExtra("Grade5", valGrade5);
-
-        intent_01.putExtra("Weight1", valWeight1);
-        intent_01.putExtra("Weight2", valWeight2);
-        intent_01.putExtra("Weight3", valWeight3);
-        intent_01.putExtra("Weight4", valWeight4);
-        intent_01.putExtra("Weight5", valWeight5);
-
+        intent_01.putExtra("ValueMap", valueMap);
         intent_01.putExtra("DesiredGrade", valDesired);
 
         startActivity(intent_01);
+    }
+
+    private float editTextToFloat(EditText et) {
+        if (!TextUtils.isEmpty(et.getText())) {
+            return Float.parseFloat(et.getText().toString());
+        } else {
+            return emptyFieldFloat;
+        }
     }
 }
