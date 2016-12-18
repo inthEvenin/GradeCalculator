@@ -13,14 +13,11 @@ import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
     private static float totalWeight = 100.00f;
-    private float totalWeightSoFar;
-    private float totalGradeSoFar;
-    private float totalWeightedGrades;
-    private float remainingWeight;
-    private float goalGrade;
-    private String goalGradeString;
-    private String gradeSoFarString;
-    private String remainingWeightString;
+    private float totalWeightSoFar, totalGradeSoFar, totalWeightedGrades;
+    private float remainingWeight, goalGrade;
+    private float grade1, grade2, grade3, grade4, grade5, desired;
+    private float weight1, weight2, weight3, weight4, weight5;
+    private String goalGradeString, gradeSoFarString, remainingWeightString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +34,28 @@ public class ResultActivity extends AppCompatActivity {
         HashMap<String, Float> valueMap = (HashMap<String, Float>)
                 intent_01.getSerializableExtra("ValueMap");
 
-        float grade1 = valueMap.get("Grade1");
-        float grade2 = valueMap.get("Grade2");
-        float grade3 = valueMap.get("Grade3");
-        float grade4 = valueMap.get("Grade4");
-        float grade5 = valueMap.get("Grade5");
+        grade1 = valueMap.get("Grade1");
+        grade2 = valueMap.get("Grade2");
+        grade3 = valueMap.get("Grade3");
+        grade4 = valueMap.get("Grade4");
+        grade5 = valueMap.get("Grade5");
 
-        float weight1 = valueMap.get("Weight1");
-        float weight2 = valueMap.get("Weight2");
-        float weight3 = valueMap.get("Weight3");
-        float weight4 = valueMap.get("Weight4");
-        float weight5 = valueMap.get("Weight5");
+        weight1 = valueMap.get("Weight1");
+        weight2 = valueMap.get("Weight2");
+        weight3 = valueMap.get("Weight3");
+        weight4 = valueMap.get("Weight4");
+        weight5 = valueMap.get("Weight5");
 
-        float desired = bundle.getFloat("DesiredGrade");
+        desired = bundle.getFloat("DesiredGrade");
 
-        totalWeightSoFar = weight1 + weight2 + weight3 + weight4 + weight5;
+        totalWeightSoFar = getTotalWeightSoFar();
         remainingWeight = totalWeight - totalWeightSoFar;
 
-        totalWeightedGrades = (grade1 * weight1) + (grade2 * weight2) + (grade3 * weight3) +
-                (grade4 * weight4) + (grade5 * weight5);
+        totalWeightedGrades = getTotalWeightedGrades();
 
-        totalGradeSoFar = (((grade1*(weight1/totalWeight)) + (grade2*(weight2/totalWeight)) +
-                (grade3*(weight3/totalWeight)) + (grade4*(weight4/totalWeight))
-                + (grade5*(weight5/totalWeight)))/totalWeightSoFar)*totalWeight;
+        totalGradeSoFar = getTotalGradeSoFar();
 
-        goalGrade = (desired * totalWeight - totalWeightedGrades)/(totalWeight - totalWeightSoFar);
+        goalGrade = getGoalGrade();
 
         goalGradeString = Float.toString(toTwoDecimal(goalGrade));
         gradeSoFarString = Float.toString(toTwoDecimal(totalGradeSoFar));
@@ -82,6 +76,25 @@ public class ResultActivity extends AppCompatActivity {
         Float formattedFloat = new Float(formatter.format(f));
 
         return formattedFloat;
+    }
+
+    private float getTotalWeightSoFar() {
+        return weight1 + weight2 + weight3 + weight4 + weight5;
+    }
+
+    private float getTotalWeightedGrades() {
+        return (grade1 * weight1) + (grade2 * weight2) + (grade3 * weight3) +
+                (grade4 * weight4) + (grade5 * weight5);
+    }
+
+    private float getTotalGradeSoFar() {
+        return (((grade1*(weight1/totalWeight)) + (grade2*(weight2/totalWeight)) +
+                (grade3*(weight3/totalWeight)) + (grade4*(weight4/totalWeight))
+                + (grade5*(weight5/totalWeight)))/totalWeightSoFar)*totalWeight;
+    }
+
+    private float getGoalGrade() {
+        return (desired * totalWeight - totalWeightedGrades)/(totalWeight - totalWeightSoFar);
     }
 
     public void onClickBack(View v) {
