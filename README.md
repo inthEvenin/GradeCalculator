@@ -9,4 +9,4 @@ Simply run this code on Android Studio. You will have to have an actual Android 
 
 ## TODO
 * Code is really messy; Need to improve on clarification of code.
-* Improve UI.
+* Improve UI. Trying to have same layout among all phones with different resolutions.
